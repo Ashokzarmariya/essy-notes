@@ -15,10 +15,10 @@ function App() {
         <Navbar />
         <Navbar1 />
         <Routes>
-          <Route exact path="/notes" element={<Note />} />
-          <Route exact path="/note/:id" element={<Readnote />} />
-          <Route exact path="/update/:id" element={<UpdateNote />} />
-          <Route exact path="/" element={<Home />} />
+          <Route  path="/notes" exact element={<Note />} />
+          <Route  path="/note/:id" exact element={<Readnote />} />
+          <Route  path="/update/:id" exact element={<UpdateNote />} />
+          <Route  path="/" exact element={<Home />} />
         </Routes>
       </div>
     </Router>
