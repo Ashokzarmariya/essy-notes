@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const UpdateNote = () => {
   const noteId = useParams();
-    const { id } = noteId;
-    const [update, setUpdate]=useState("")
+  const { id } = noteId;
+  const [update, setUpdate] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -14,15 +14,15 @@ const UpdateNote = () => {
     tags: "",
   });
 
-  const getNote = () => {
-    axios
-      .get(`https://ashok-notes.herokuapp.com/notes/get/${id}`)
-      .then((res) => {
-        setFormData(res.data);
-      });
-  };
-
   useEffect(() => {
+    const getNote = () => {
+      axios
+        .get(`https://ashok-notes.herokuapp.com/notes/get/${id}`)
+        .then((res) => {
+          setFormData(res.data);
+        });
+    };
+
     getNote();
   }, [id]);
 
@@ -45,9 +45,9 @@ const UpdateNote = () => {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
-            console.log(formData);
-            updateNote();
-            setUpdate("updated successfully")
+          console.log(formData);
+          updateNote();
+          setUpdate("updated successfully");
         }}
       >
         <div className="my-5 bg-light">
@@ -90,26 +90,22 @@ const UpdateNote = () => {
               className="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter Tage:"
-                      />
-                      
-                  </div>
-                  
-                  <div className="d-flex justify-content-between">
-                       <div className="p-3">
-                     
-                          <button className="btn btn-primary ">Update Note</button>
-                      
-            
-                      </div>
-                      <div className="text-success my-3"><p>{update}</p> </div>
-                  <div className="p-3">
-                      <Link to={`/note/${id}`}>
-                          <button className="btn btn-primary ">See Note</button>
-                      </Link>
-            
+            />
           </div>
-                  </div>
-                 
+
+          <div className="d-flex justify-content-between">
+            <div className="p-3">
+              <button className="btn btn-primary ">Update Note</button>
+            </div>
+            <div className="text-success my-3">
+              <p>{update}</p>{" "}
+            </div>
+            <div className="p-3">
+              <Link to={`/note/${id}`}>
+                <button className="btn btn-primary ">See Note</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </form>
     </div>
