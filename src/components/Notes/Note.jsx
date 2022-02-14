@@ -11,14 +11,7 @@ const Note = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getData();
-  }, [delet, page]);
-
-  function pageNo(n) {
-    setPage(page + n);
-  }
-
-  const getData = () => {
+    const getData = () => {
     setLoading(true);
     fetch(`https://ashok-notes.herokuapp.com/notes/get?_page=${page}&&_limit=9`)
       .then((d) => d.json())
@@ -27,6 +20,14 @@ const Note = () => {
         setLoading(false);
       });
   };
+    getData();
+  }, [delet, page]);
+
+  function pageNo(n) {
+    setPage(page + n);
+  }
+
+  
 
   const deleteNote = (id) => {
     setLoading(true);

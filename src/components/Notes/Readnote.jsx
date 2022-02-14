@@ -10,18 +10,18 @@ const Readnote = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getNote = () => {
-    axios
+  
+
+  useEffect(() => {
+    const getNote = () => {
+   return axios
       .get(`https://ashok-notes.herokuapp.com/notes/get/${id}`)
       .then((res) => {
         setData(res.data);
         setLoading(false);
       });
-    console.log("getNote");
+    
   };
-
-  useEffect(() => {
-    console.log("useEffect");
     getNote();
   }, [id]);
 
