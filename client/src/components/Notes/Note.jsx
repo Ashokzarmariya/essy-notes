@@ -17,6 +17,7 @@ const Note = () => {
       .then((d) => d.json())
       .then((res) => {
         setData(res);
+        
         setLoading(false);
       });
   };
@@ -62,10 +63,10 @@ const Note = () => {
         })}
       </div>
       {loading && (
-        <li className="page-item mx-3">
-          {" "}
+        <p className="page-item mx-3">
+          
           <Loading />
-        </li>
+        </p>
       )}
       <div className="d-flex justify-content-center bg-light ">
         <div className="p-3">

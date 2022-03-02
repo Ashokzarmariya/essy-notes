@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
@@ -9,24 +10,20 @@ const Input = () => {
   });
 
   function handelChange(e) {
-    const { name, value } = e.target;
+    const { name } = e.target;
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: e.target.value,
     });
   }
 
+
   const postData = () => {
-    const data = formData;
-    fetch("https://ashok-notes.herokuapp.com/notes/addnote", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-  };
+    axios.post("https://ashok-notes.herokuapp.com/notes/addnote",formData)
+  }
+
+
 
   return (
     <div className="my-5">
